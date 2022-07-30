@@ -2,7 +2,7 @@ import { client } from "./client";
 import Cookies from "js-cookie";
 
 // サインアップ処理
-export const signup = (params) => {
+export const signUp = (params) => {
     return client.post('auth', params)
         .then(response => {
             return response.data;
