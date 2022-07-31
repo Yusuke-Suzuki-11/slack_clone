@@ -21,21 +21,21 @@ export const SignIn = () => {
         e.preventDefault();
         const params = generateParams();
 
+        const res = await signIn(params).then((value) => {
+            return value;
+        });
         try {
-            const res = await signIn(params);
-            console.log(res.status);
             if (res.status === 200) {
+                console.log(res);
                 Cookies.set("_access_token", res.headers["access-token"]);
                 Cookies.set("_client", res.headers["client"]);
                 Cookies.set("_uid", res.headers["uid"]);
-
                 setIsSignedIn(true);
-                setCurrentUser(res.data.data);
-
+                setCurrentUser(res.data);
                 history.push("/");
             }
         } catch (e) {
-            console.log(e);
+            console.log('ログインに失敗しました。');
         }
     };
     return (
@@ -44,12 +44,11 @@ export const SignIn = () => {
 
                 <div className="bg-white py-6 sm:py-8 lg:py-12">
                     <div className="max-w-screen-2xl px-4 md:px-8 mx-auto">
-                        <img
+                        {/* <img
                             src="images/logo.svg" alt=""
                             className="w-36 m-auto block mb-5"
-                        />
+                        /> */}
                         <h2 className="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8">ログイン</h2>
-
                         <form className="max-w-lg border rounded-lg mx-auto">
                             <div className="flex flex-col gap-4 p-4 md:p-8">
                                 <div>

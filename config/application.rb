@@ -14,14 +14,14 @@ module SlackClone
     config.middleware.use ActionDispatch::Cookies # Required for all session management
     config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
     config.middleware.use ActionDispatch::Flash
-    # config.middleware.insert_before 0, Rack::Cors do
-    #   allow do
-    #     origins 'localhost:3000'
-    #     resource '*',
-    #       :headers => :any,
-    #       :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-    #       :methods => [:get, :post, :options, :delete, :put]
-    #   end
-    # end
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'localhost:3000'
+        resource '*',
+          :headers => :any,
+          :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          :methods => [:get, :post, :options, :delete, :put]
+      end
+    end
   end
 end

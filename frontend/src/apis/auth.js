@@ -14,8 +14,7 @@ export const signUp = (params) => {
 export const signIn = (params) => {
     return client.post("/auth/sign_in", params)
         .then(response => {
-            console.log(response.data);
-            return response.data;
+            return response;
         })
         .catch((e) => console.error(e));
 };
