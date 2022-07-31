@@ -38,7 +38,7 @@ export const getCurrentUser = () => {
         !Cookies.get("_uid")
     ) return;
 
-    return client.get("/auth/sessions", {
+    return client.get("/api/v1/auth/sessions", {
         headers: {
             "access-token": Cookies.get("_access_token"),
             client: Cookies.get("_client"),
