@@ -10,6 +10,7 @@ gem 'mysql2'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'devise_token_auth', '>= 1.2.0', git: "https://github.com/lynndylanhurley/devise_token_auth"
+gem 'cssbundling-rails'
 
 
 # gem "jbuilder"
