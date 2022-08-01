@@ -1,3 +1,10 @@
+import { Header } from "./common/Header"
+
 export const Home = () => {
-    return <p>Homeページです</p>
+    return (
+        <>
+            <Header />
+            
+        </>
+    )
 }
