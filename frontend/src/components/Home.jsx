@@ -5,11 +5,12 @@ import { ChatSpace } from "./home/ChatSpace"
 export const Home = () => {
     return (
         <>
-            <Header />
-            <div className="h-11"></div>
-            <div className="flex  bg-red-400">
+            <div className="h-full bg-red-200  ">
+                <Header />
                 <SideBar />
+
                 <ChatSpace />
+
             </div>
         </>
     )
