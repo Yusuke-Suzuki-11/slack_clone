@@ -5,7 +5,7 @@ import { faCaretSquareDown } from '@fortawesome/free-regular-svg-icons';
 export const SideBar = () => {
     return (
         <>
-            <div className="fixed w-72 h-full bg-purple-900">
+            <div className="fixed w-72 h-full bg-purple-900 z-10">
                 <div className="flex h-full border-r-2" style={{ borderRight: "1px solid  #c2c2c2ad" }}>
                     {/*// !左側（組織） */}
                     <div className="w-16 h-full block shrink-0" style={{ borderRight: "1px solid  #c2c2c2ad" }}>

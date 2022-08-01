@@ -3,21 +3,43 @@ import React from 'react';
 export const ChatSpace = () => {
     return (
         <>
-            <div className=' bg-black h-full'>
-                <div className="flex">
-                    <div className="w-72 shrink-0 ">
+            <div className=''>
+                <div className="flex h-full">
+                    <div className="w-72 shrink-0">
                     </div>
-                    <div className='w-full h-full'>
-                        <div className="block w-full" style={{ borderBottom: "1px solid  #c2c2c2ad" }}>
-                            <div className="flex h-12 items-center ml-6 ">
+                    <div className='w-full h-full flex  flex-col justify-between'>
+                        <div className="fixed h-12 block w-full bg-white" style={{ borderBottom: "1px solid  #c2c2c2ad" }}>
+                            <div className="flex h-12 items-center ml-4">
                                 <p className="font-bold">スレッド</p>
                             </div>
                         </div>
-                        <div className='overflow-scroll'>
+                        <div className='h-12'></div>
+
+                        {/* コメントスペース */}
+                        <div className="h-full bg-red-300 w-full">
                             <p>
-                                fsda
+                                fdsafa
+                            </p>
+                            <p>
+                                fdsafa
                             </p>
                         </div>
+
+                        {/* チャット */}
+                        <div className="fixed bottom-0 left-0 w-full ">
+                            <div className="flex">
+                                <div className="w-72 shrink-0">
+                                </div>
+                                <div className="px-4 w-full">
+                                    <div className=" w-fullbg-red-200 h-44 rounded-lg mb-7  " style={{ border: "1px solid  #c2c2c2ad" }}>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
