@@ -4,7 +4,7 @@ export const Header = () => {
     return (
         <>
             <div className='fixed z-10 h-11 w-full'>
-                <div className="w-full h-full bg-purple-900 relative" style={{ borderBottom: "1px solid  #c2c2c2ad" }}>
+                <div className="w-full h-full bg-theme-color relative" style={{ borderBottom: "1px solid  #c2c2c2ad" }}>
                     <div className='py-1.5 w-5/12 h-full block m-auto '>
                         <div className=' bg-neutral-50  h-full rounded-md  '>
                             <p className=' flex justify-center items-center h-full text-sm '>
