@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretSquareDown } from '@fortawesome/free-regular-svg-icons';
+import { faCaretSquareDown, } from '@fortawesome/free-regular-svg-icons';
+import { faPlus, } from '@fortawesome/free-solid-svg-icons';
 
 export const SideBar = () => {
     return (
@@ -42,30 +43,31 @@ export const SideBar = () => {
                                     ダイレクトメッセージ
                                 </div>
                             </div>
+                            
                             <div className='w-full'>
-                                <div className=" flex items-center px-4 py-2  ">
+                                
+                                {/* //TODO::アカウントのループ */}
+                                <button className=" flex items-center px-4 py-2  hover:bg-opacity-black w-full">
                                     <div className=" mr-3 w-5  aspect-square bg-white rounded-sm  ">
                                     </div>
                                     <div className=" text-sm font-semibold" >
                                         鈴木佑輔
                                     </div>
-                                </div>
-                                <div className=" flex items-center px-4 py-2  ">
-                                    <div className=" mr-3 w-5  aspect-square bg-white rounded-sm  ">
-                                    </div>
-                                    <div className=" text-sm font-semibold" >
-                                        鈴木佑輔
-                                    </div>
-                                </div>
-                                <div className=" flex items-center px-4 py-2  ">
-                                    <div className=" mr-3 w-5  aspect-square bg-white rounded-sm  ">
-                                    </div>
-                                    <div className=" text-sm font-semibold" >
-                                        鈴木佑輔
-                                    </div>
-                                </div>
+                                </button>
 
                             </div>
+
+                            {/* //!チャンネル追加 */}
+                            <button className='w-full hover:bg-opacity-black '>
+                                <div className=" flex items-center px-4 py-2">
+                                    <div className="mr-3 w-5 aspect-square rounded-sm text-center flex justify-center items-center " style={{ backgroundColor: '#ffffff36' }}  >
+                                        <FontAwesomeIcon icon={faPlus} className="text-xs" />
+                                    </div>
+                                    <div className=" text-sm font-semibold" >
+                                        チャンネルを追加する
+                                    </div>
+                                </div>
+                            </button>
 
                         </div>
                     </div>
