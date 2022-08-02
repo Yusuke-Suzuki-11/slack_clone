@@ -15,9 +15,10 @@ export const ChatSpace = () => {
                         </div>
 
                         <div className='h-12'></div>
-                        <div className='fixed w-full h-full bg-green-50 overflow-auto'>
+                        <div className='fixed w-full h-full bg-green-50'>
                             {/* コメントスペース */}
-                            <div className=" bg-red-300 w-full h-full flex flex-col justify-end">
+                            <div className=" bg-red-300 w-full h-full flex flex-col justify-end overflow-scroll  ">
+                                {/* //TODOコメントをループさせる */}
                                 <p>
                                     fdsafa
                                 </p>
@@ -28,12 +29,11 @@ export const ChatSpace = () => {
                                     fdsafa
                                 </p>
                                 
-                                <div className="bg-white mb-10">
+                                <div className="bg-white mb-20 ">
                                     <div className="px-4 w-full">
-                                        <div className=" w-fullbg-red-200 h-44 rounded-lg mb-7  " style={{ border: "1px solid  #c2c2c2ad" }}>
-                                        </div>
+                                        <textarea className=" w-full h-44 rounded-lg mb-7  " style={{ border: "1px solid  #c2c2c2ad" }}>
+                                        </textarea>
                                     </div>
-
                                 </div>
 
                             </div>
