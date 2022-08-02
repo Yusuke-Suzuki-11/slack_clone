@@ -18,7 +18,6 @@ export const SideBar = () => {
         targetWidth = targetDom.clientWidth;
     });
 
-
     const pushAddAccountPopUp = (event) => {
         console.log(targetDom.getBoundingClientRect().left);
         startOffsetX = targetDom.getBoundingClientRect().left;
