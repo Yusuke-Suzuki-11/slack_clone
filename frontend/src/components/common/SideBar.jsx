@@ -69,7 +69,7 @@ export const SideBar = () => {
                     <textarea name="" placeholder='mr.suzuki.11@gmail.com' className='border w-full h-20 border-gray-300 rounded-md p-2'>
                     </textarea>
                     <div className=' h-2'></div>
-                    <button className='bg-gray-200 py-2 px-8 rounded-md  ml-auto block font-bold'>
+                    <button className='bg-gray-200 py-2 px-8 rounded-md ml-auto block font-bold'>
                         送信
                     </button>
                 </div>
@@ -84,10 +84,10 @@ export const SideBar = () => {
             {/* ヘッダの分浮かせる */}
             <div className="h-11"></div>
 
-            <div className="fixed w-72 h-full bg-theme-color z-10">
-                <div className="flex h-full border-r-2" style={{ borderRight: "1px solid  #c2c2c2ad" }}>
+            <div className="fixed w-72 h-full z-10 bg-theme-color   ">
+                <div className="flex h-full border-r-2 w-full" style={{ borderRight: "1px solid  #c2c2c2ad" }}>
                     {/*// !左側（組織） */}
-                    <div className="w-16 h-full block shrink-0" style={{ borderRight: "1px solid  #c2c2c2ad" }}>
+                    <div className="w-20 h-full block" style={{ borderRight: "1px solid  #c2c2c2ad" }}>
                         <div className=" w-full flex justify-center ">
                             <div className="px-4 w-full  ">
                                 <div className=" my-2 aspect-square w-full bg-white  rounded-md ">
@@ -98,7 +98,7 @@ export const SideBar = () => {
                     </div>
 
                     {/*// !右側(メンバー) */}
-                    <div className='w-full h-full text-tx-white'>
+                    <div className='h-full text-tx-white w-full'>
                         {/*// !組織名 */}
                         <div className="flex h-12 w-full justify-center items-center px-5" style={{ borderBottom: "1px solid  #c2c2c2ad" }}>
                             <div className="w-full py-3 ">
@@ -121,7 +121,7 @@ export const SideBar = () => {
                             </div>
                             <div className='w-full'>
                                 {/* //TODO::アカウントのループ */}
-                                <button className=" flex items-center px-4 py-1  hover:bg-opacity-black w-full">
+                                <button className=" flex items-center px-4 py-1 hover:bg-opacity-black w-full">
                                     <div className=" mr-3 w-5 ">
                                         <FontAwesomeIcon icon={faHashtag} className="text-xs" />
                                     </div>
