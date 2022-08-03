@@ -6,9 +6,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'theme-color': "#4A154A",
+        'theme-color': "#3f0e40",
         'opacity-black': "#00000028",
         'opacity-white': "#ffffff46",
+        'tx-white': "#ffffffad",
       },
     },
   },
