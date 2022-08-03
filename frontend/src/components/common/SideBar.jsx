@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretSquareDown, } from '@fortawesome/free-regular-svg-icons';
 import { faPlus, faHashtag, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { userInvite } from '../../apis/users';
 
 let targetDom;
 let startOffsetX;
@@ -11,6 +12,7 @@ let targetWidth;
 export const SideBar = () => {
     const [showAddGroupPopUp, setShowAddGroupPopUp] = React.useState(false);
     const [showAddMemberPopUp, setShowAddMemberPopUp] = React.useState(false);
+    const [inviteUserEmail, setInviteUserEmail] = React.useState('');
 
     React.useEffect(() => {
         targetDom = document.getElementById('js-add-group');
@@ -19,6 +21,7 @@ export const SideBar = () => {
         targetWidth = targetDom.clientWidth;
     });
 
+    // ポップアップ出す系
     const pushAddGroupPopUp = (event) => {
         console.log(targetDom.getBoundingClientRect().left);
         startOffsetX = targetDom.getBoundingClientRect().left;
@@ -26,21 +29,30 @@ export const SideBar = () => {
         targetWidth = targetDom.clientWidth;
         setShowAddGroupPopUp(true);
     }
-
     const pushAddMemberPopUp = () => {
         setShowAddMemberPopUp(true);
     }
 
+    // ポップアップ消す系
     const popAddGroupPopUp = (event) => {
         if (event.target !== event.currentTarget) return;
         setShowAddGroupPopUp(false);
     }
-
     const popAddMemberPopUp = (event) => {
         if (event.target !== event.currentTarget) return;
         setShowAddMemberPopUp(false);
     }
+    
+    const handleInviteEmail = (event) => {
+        setInviteUserEmail(event.target.value)
+    }
+    
+    const inviteUser = () => {
+        userInvite({ inviteEmail: inviteUserEmail });
+        setShowAddMemberPopUp(false);
+    }
 
+    // DOM用意
     var addGroupPopUp = (
         <>
             <div className="fixed h-full w-full z-20" onClick={(e) => { popAddGroupPopUp(e) }}>
@@ -52,7 +64,6 @@ export const SideBar = () => {
             </div>
         </>
     );
-
     var addMemberPopUp = (
         <>
             <div className="fixed h-full w-full z-20 flex bg-opacity-st-black" onClick={(e) => { popAddMemberPopUp(e) }}>
@@ -66,10 +77,10 @@ export const SideBar = () => {
                     <div className=' h-5'></div>
                     <p className=' font-semibold text-xl'>送信先：</p>
                     <div className=' h-3'></div>
-                    <textarea name="" placeholder='mr.suzuki.11@gmail.com' className='border w-full h-20 border-gray-300 rounded-md p-2'>
+                    <textarea name='inviteEmail' onChange={(e) => { handleInviteEmail(e) }} placeholder='mr.suzuki.11@gmail.com' className='border w-full h-20 border-gray-300 rounded-md p-2'>
                     </textarea>
                     <div className=' h-2'></div>
-                    <button className='bg-gray-200 py-2 px-8 rounded-md ml-auto block font-bold'>
+                    <button onClick={() => { inviteUser() }} className='bg-gray-200 py-2 px-8 rounded-md ml-auto block font-bold'>
                         送信
                     </button>
                 </div>
