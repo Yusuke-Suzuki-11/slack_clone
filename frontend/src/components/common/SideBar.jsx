@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretSquareDown, } from '@fortawesome/free-regular-svg-icons';
-import { faPlus, faHashtag} from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faHashtag, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 let targetDom;
 let startOffsetX;
@@ -27,9 +27,18 @@ export const SideBar = () => {
         setShowAddGroupPopUp(true);
     }
 
+    const pushAddMemberPopUp = () => {
+        setShowAddMemberPopUp(true);
+    }
+
     const popAddGroupPopUp = (event) => {
         if (event.target !== event.currentTarget) return;
         setShowAddGroupPopUp(false);
+    }
+
+    const popAddMemberPopUp = (event) => {
+        if (event.target !== event.currentTarget) return;
+        setShowAddMemberPopUp(false);
     }
 
     var addGroupPopUp = (
@@ -43,14 +52,26 @@ export const SideBar = () => {
             </div>
         </>
     );
-    
+
     var addMemberPopUp = (
         <>
-            <div className="fixed h-full w-full z-20" onClick={(e) => { popAddGroupPopUp(e) }}>
-                <div className='text-sm fixed w-20 py-3 px-2  z-30 bg-white rounded' style={{ top: endOffsetY, left: startOffsetX, width: targetWidth }}>
-                    <p className=' text-red-600 '>※まだダミーだよ！</p>
-                    <p>チーム</p>
-                    <p>チャンネル一覧</p>
+            <div className="fixed h-full w-full z-20 flex bg-opacity-st-black" onClick={(e) => { popAddMemberPopUp(e) }}>
+                <div className='p-6 w-4/12 bg-white rounded-md m-auto justify-center '>
+                    <div className='flex items-center justify-between  '>
+                        <p className=' text-2xl font-bold   '>01Boosterにメンバーを招待する</p>
+                        <button className='  p-2 rounded-md  h-10 aspect-square hover:bg-opacity-black flex items-center justify-center' onClick={(e) => { setShowAddMemberPopUp(false) }}>
+                            <FontAwesomeIcon className=' text-xl  ' icon={faXmark} />
+                        </button>
+                    </div>
+                    <div className=' h-5'></div>
+                    <p className=' font-semibold text-xl'>送信先：</p>
+                    <div className=' h-3'></div>
+                    <textarea name="" placeholder='mr.suzuki.11@gmail.com' className='border w-full h-20 border-gray-300 rounded-md p-2'>
+                    </textarea>
+                    <div className=' h-2'></div>
+                    <button className='bg-gray-200 py-2 px-8 rounded-md  ml-auto block font-bold'>
+                        送信
+                    </button>
                 </div>
             </div>
         </>
@@ -59,6 +80,10 @@ export const SideBar = () => {
     return (
         <>
             {showAddGroupPopUp && addGroupPopUp}
+            {showAddMemberPopUp && addMemberPopUp}
+            {/* ヘッダの分浮かせる */}
+            <div className="h-11"></div>
+
             <div className="fixed w-72 h-full bg-theme-color z-10">
                 <div className="flex h-full border-r-2" style={{ borderRight: "1px solid  #c2c2c2ad" }}>
                     {/*// !左側（組織） */}
@@ -144,7 +169,7 @@ export const SideBar = () => {
                             <button
                                 id='js-add-group'
                                 className='w-full hover:bg-opacity-black'
-                                onClick={(e) => { pushAddGroupPopUp(e) }}
+                                onClick={(e) => { pushAddMemberPopUp(e) }}
                             >
                                 <div className=" flex items-center px-4 py-2">
                                     <div className="mr-3 w-5 aspect-square rounded-sm text-center flex justify-center items-center " style={{ backgroundColor: '#ffffff36' }}  >

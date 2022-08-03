@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         'theme-color': "#3f0e40",
         'opacity-black': "#00000028",
+        'opacity-st-black': "#00000080",
         'opacity-white': "#ffffff46",
         'tx-white': "#ffffffad",
       },
