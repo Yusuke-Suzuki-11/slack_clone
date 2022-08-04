@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_04_070031) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_04_124728) do
+  create_table "direct_messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "to_user_id", null: false
+    t.bigint "from_user_id", null: false
+    t.string "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["from_user_id"], name: "index_direct_messages_on_from_user_id"
+    t.index ["to_user_id"], name: "index_direct_messages_on_to_user_id"
+  end
+
   create_table "reactions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "to_user_id", null: false
     t.bigint "from_user_id", null: false
@@ -46,6 +56,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_070031) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "direct_messages", "users", column: "from_user_id"
+  add_foreign_key "direct_messages", "users", column: "to_user_id"
   add_foreign_key "reactions", "users", column: "from_user_id"
   add_foreign_key "reactions", "users", column: "to_user_id"
 end

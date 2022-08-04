@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
   
   has_many :reactions
+  has_many :direct_messages
 end
