@@ -20,20 +20,6 @@ export const SideBar = () => {
     startOffsetX = targetDom.getBoundingClientRect().left;
     endOffsetY = targetDom.getBoundingClientRect().bottom;
     targetWidth = targetDom.clientWidth;
-    setUserObjectsArray([
-      {
-        allow_password_change: false,
-        created_at: "2022-07-28T11:45:46.540Z",
-        email: "mr.suzuki.11@gmail.com",
-        id: 1,
-        image: null,
-        name: null,
-        nickname: null,
-        provider: "email",
-        uid: "mr.suzuki.11@gmail.com",
-        updated_at: "2022-08-04T07:41:31.581Z",
-      },
-    ]);
   });
 
   // ポップアップ出す系
@@ -62,9 +48,17 @@ export const SideBar = () => {
     setInviteUserEmail(event.target.value);
   };
 
-  const inviteUser = () => {
-    userInvite({ inviteEmail: inviteUserEmail });
-    // setShowAddMemberPopUp(false);
+  const inviteUser = async () => {
+    userInvite({ inviteEmail: inviteUserEmail })
+      .then((response) => {
+        if (!response.success) return;
+        let userObject = response.message;
+        setUserObjectsArray([userObject]);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    setShowAddMemberPopUp(false);
   };
 
   // DOM用意
@@ -223,10 +217,18 @@ export const SideBar = () => {
               </div>
               <div className="w-full">
                 {/* //TODO::アカウントのループ */}
-                <button className=" flex items-center px-4 py-2  hover:bg-opacity-black w-full">
-                  <div className=" mr-3 w-5  aspect-square bg-white rounded-sm  "></div>
-                  <div className=" text-sm font-semibold">鈴木佑輔</div>
-                </button>
+                {userObjectsArray.map((item) => {
+                  return (
+                    <div key={item.id}>
+                      <button className=" flex items-center px-4 py-2  hover:bg-opacity-black w-full">
+                        <div className=" mr-3 w-5  aspect-square bg-white rounded-sm  "></div>
+                        <div className=" text-sm font-semibold">
+                          {item.name}
+                        </div>
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
               {/* //!チャンネル追加 */}
               <button

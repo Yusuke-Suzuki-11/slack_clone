@@ -19,7 +19,6 @@ export const userInvite = (params) => {
       },
     })
     .then((response) => {
-      console.log(response);
       return response.data;
     })
     .catch((e) => console.error(e));

@@ -45,9 +45,6 @@ export const getCurrentUser = () => {
             uid: Cookies.get("_uid"),
         },
     }).then((value) =>{
-        console.log('=================');
-        console.log(value);
-        console.log('=================');
         return value
     });
 };

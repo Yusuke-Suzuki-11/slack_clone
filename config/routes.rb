@@ -10,7 +10,6 @@ Rails.application.routes.draw do
       namespace :auth do
         resources :sessions, only: %i[index]
         post 'account/invite', to: 'users#invite'
-        get 'test', to: 'users#test'
       end
     end
   
