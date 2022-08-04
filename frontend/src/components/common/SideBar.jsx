@@ -49,7 +49,7 @@ export const SideBar = () => {
     
     const inviteUser = () => {
         userInvite({ inviteEmail: inviteUserEmail });
-        setShowAddMemberPopUp(false);
+        // setShowAddMemberPopUp(false);
     }
 
     // DOM用意
