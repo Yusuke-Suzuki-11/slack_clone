@@ -23,5 +23,7 @@ module SlackClone
           :methods => [:get, :post, :options, :delete, :put]
       end
     end
+    Rails.application.config.i18n.default_locale = :ja
+    Faker::Config.locale = :ja
   end
 end
