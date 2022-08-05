@@ -23,4 +23,5 @@ class Api::V1::Auth::UsersController < ApplicationController
         
         render json: {success: true, message: target_user}
     end
+    
 end

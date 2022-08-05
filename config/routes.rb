@@ -7,10 +7,9 @@ Rails.application.routes.draw do
       namespace :auth do
         resources :sessions, only: %i[index]
         post 'account/invite',        to: 'users#invite'
-        get  'direct_message/index',  to: 'direct_messages#index'
+        get  'direct_message/index/:user_id',  to: 'direct_messages#index'
         post 'direct_message/create', to: 'direct_messages#create'
       end
     end
-  
   end
 end

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { faPlus, faHashtag, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { userInvite } from "../../apis/users";
+import { getMessageByUserId } from "../../apis/direct_messages";
 
 let targetDom;
 let startOffsetX;
@@ -59,6 +60,16 @@ export const SideBar = () => {
         console.log(e);
       });
     setShowAddMemberPopUp(false);
+  };
+  
+  const getMessage = async (userId) => {
+    getMessageByUserId({ userId })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   // DOM用意
@@ -220,7 +231,7 @@ export const SideBar = () => {
                 {userObjectsArray.map((item) => {
                   return (
                     <div key={item.id}>
-                      <button className=" flex items-center px-4 py-2  hover:bg-opacity-black w-full">
+                      <button className=" flex items-center px-4 py-2  hover:bg-opacity-black w-full" onClick={() => {getMessage(item.id)}}>
                         <div className=" mr-3 w-5  aspect-square bg-white rounded-sm  "></div>
                         <div className=" text-sm font-semibold">
                           {item.name}
