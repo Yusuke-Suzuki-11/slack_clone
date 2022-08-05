@@ -6,6 +6,7 @@ import { useState } from "react"
 
 export const Home = () => {
     const [directMessageObjectsArray, setDirectMessageObjectsArray] = useState([]);
+    const [directMessageToUser, setDirectMessageToUser] = useState();
     
     return (
         <>
