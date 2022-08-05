@@ -13,7 +13,13 @@ export const Home = () => {
     <>
       <div className="h-full">
         <Header />
-        <HomeContext.Provider value={{}}>
+        <HomeContext.Provider 
+          value={{
+            directMessageObjectsArray,
+            setDirectMessageObjectsArray,
+            directMessageToUser,
+            setDirectMessageToUser
+          }}>
           <SideBar />
           <ChatSpace />
         </HomeContext.Provider>
