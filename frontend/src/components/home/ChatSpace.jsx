@@ -61,7 +61,7 @@ export const ChatSpace = () => {
                                 </p>
                               </div>
                               <div className="mt-2"></div>
-                              <p className="font-normal">{item.message}</p>
+                              <p className="font-normal whitespace-pre-line">{item.message}</p>
                             </div>
                           </div>
                         </div>
@@ -77,7 +77,8 @@ export const ChatSpace = () => {
                       style={{ border: "1px solid  #c2c2c2ad" }}
                     >
                       <textarea
-                        name="inviteEmail"
+                        name="postMessage"
+                        id="post-message"
                         onChange={(e) => {
                           handlePostMessage(e);
                         }}
@@ -87,12 +88,11 @@ export const ChatSpace = () => {
                       <button
                         onClick={() => {
                           let messagesArrayClone = props.directMessageObjectsArray.concat();
-                          
                           apiSendMessage(postMessage, props.directMessageToUser.id).then((value)=>{
                             messagesArrayClone.push(value.message);
                             props.setDirectMessageObjectsArray(messagesArrayClone);
                           });
-                          
+                          document.getElementById('post-message').value = '';
                           setPostMessage('');
                         }}
                         className="px-4 py-1 rounded-md bg-slate-300"
