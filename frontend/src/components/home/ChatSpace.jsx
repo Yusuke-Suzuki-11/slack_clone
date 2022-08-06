@@ -4,6 +4,11 @@ import { useContext } from "react";
 
 export const ChatSpace = () => {
   const props = useContext(HomeContext);
+  const [postMessage, setPostMessage] = React.useState("");
+  
+  const handlePostMessage  = (event) => {
+    setPostMessage(event.target.value);
+  };
 
   return (
     <>
@@ -71,8 +76,11 @@ export const ChatSpace = () => {
                       style={{ border: "1px solid  #c2c2c2ad" }}
                     >
                       <textarea
-                        name=""
-                        id=""
+                        name="inviteEmail"
+                        onChange={(e) => {
+                          handlePostMessage(e);
+                        }}
+                        placeholder=".....メッセージを入力してください"
                         className="w-full p-4 border rounded-lg mb-7 "
                       ></textarea>
                       <button
@@ -91,7 +99,8 @@ export const ChatSpace = () => {
                           test.push(dummy);
                           props.setDirectMessageObjectsArray(test);
                           
-                          console.log("送信");
+                          
+                          console.log(postMessage);
                         }}
                         className="px-4 py-1 rounded-md bg-slate-300"
                       >
