@@ -65,10 +65,11 @@ export const SideBar = () => {
     setShowAddMemberPopUp(false);
   };
 
-  const getMessage = async (userId) => {
-    getMessageByUserId({ userId })
+  const getMessage = async ( userObject) => {
+    getMessageByUserId({ userId: userObject.id })
       .then((response) => {
         props.setDirectMessageObjectsArray(response.message);
+        props.setDirectMessageToUser(userObject)
         console.log(response.message);
       })
       .catch((e) => {
@@ -236,7 +237,7 @@ export const SideBar = () => {
                       <button
                         className="flex items-center w-full px-4 py-2 hover:bg-opacity-black"
                         onClick={() => {
-                          getMessage(item.id);
+                          getMessage(item);
                         }}
                       >
                         <div className="w-5 mr-3 bg-white rounded-sm aspect-square"></div>
