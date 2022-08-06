@@ -44,21 +44,18 @@ export const ChatSpace = () => {
                                 <img src={item.userImageUrl} alt="" />
                               </div>
                             </div>
-
                             {/* チャット部分 */}
                             <div className=" border-opacity-black">
                               <div className="flex items-end justify-star">
                                 <p className="mr-1 font-bold ">
-                                  {item.userName ?? 'No Name'}
+                                  {item.userName ?? "No Name"}
                                 </p>
                                 <p className="text-xs font-light text-gray-500">
                                   {date}
                                 </p>
                               </div>
                               <div className="mt-2"></div>
-                              <p className="font-normal">
-                                {item.message}
-                              </p>
+                              <p className="font-normal">{item.message}</p>
                             </div>
                           </div>
                         </div>
@@ -69,10 +66,38 @@ export const ChatSpace = () => {
 
                 <div className="mb-20 bg-white ">
                   <div className="w-full px-4">
-                    <textarea
-                      className="w-full rounded-lg h-44 mb-7"
+                    <div
+                      className="w-full p-4 rounded-lg h-44 mb-7"
                       style={{ border: "1px solid  #c2c2c2ad" }}
-                    ></textarea>
+                    >
+                      <textarea
+                        name=""
+                        id=""
+                        className="w-full p-4 border rounded-lg mb-7 "
+                      ></textarea>
+                      <button
+                        onClick={() => {
+                          let dummy = {
+                            createdAt: "2022-08-05T10:41:25.300Z",
+                            id: 100,
+                            message: "unkoko",
+                            toUserId: 1,
+                            userEmail: "mr.suzuki.job@gmail.com",
+                            userId: 2,
+                            userImageUrl: null,
+                            userName: "鈴木佑輔（テスト）",
+                          }
+                          let test = props.directMessageObjectsArray.concat();
+                          test.push(dummy);
+                          props.setDirectMessageObjectsArray(test);
+                          
+                          console.log("送信");
+                        }}
+                        className="px-4 py-1 rounded-md bg-slate-300"
+                      >
+                        送信
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
