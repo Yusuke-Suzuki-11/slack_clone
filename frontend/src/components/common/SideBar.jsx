@@ -245,9 +245,11 @@ export const SideBar = () => {
                           getMessage(item);
                         }}
                       >
-                        <div className="w-5 mr-3 bg-white rounded-sm aspect-square"></div>
+                        <div className="w-5 mr-3 bg-white rounded-sm aspect-square">
+                          <img src={item.image} alt="" />
+                        </div>
                         <div className="text-sm font-semibold ">
-                          {item.name}
+                          {item.name ?? 'No Name'}
                         </div>
                       </button>
                     </div>
