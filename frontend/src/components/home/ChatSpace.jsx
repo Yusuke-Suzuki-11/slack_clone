@@ -40,14 +40,16 @@ export const ChatSpace = () => {
                           <div className="flex items-start justify-start py-4 ">
                             {/* アイコン部分 */}
                             <div className="mr-3 ">
-                              <div className="w-10 bg-green-300 rounded-md aspect-square"></div>
+                              <div className="w-10 bg-gray-300 border border-gray-300 rounded-md aspect-square">
+                                <img src={item.userImageUrl} alt="" />
+                              </div>
                             </div>
 
                             {/* チャット部分 */}
                             <div className=" border-opacity-black">
                               <div className="flex items-end justify-star">
                                 <p className="mr-2 font-bold ">
-                                  {props.directMessageToUser.name}
+                                  {item.userName ?? 'No Name'}
                                 </p>
                                 <p className="text-xs font-light text-gray-500">
                                   {date}

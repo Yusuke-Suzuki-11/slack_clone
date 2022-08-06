@@ -13,13 +13,13 @@ class Api::V1::Auth::DirectMessagesController < ApplicationController
         )
         
         message_row_set = DirectMessage.find_by_sql([
-            'select dm.id, dm.to_user_id, dm.message, dm.created_at, u.id as user_id, u.name as user_name, u.email as user_email
+            'select dm.id, dm.to_user_id, dm.message, dm.created_at, u.id as user_id, u.name as user_name, u.email as user_email, u.image as user_image_url
             from direct_messages as dm
             join users as u
             on u.id = dm.from_user_id
             where to_user_id = 1 and from_user_id = 2
             union 
-            select dm.id, dm.to_user_id, dm.message, dm.created_at, u.id as user_id, u.name as user_name, u.email as user_email
+            select dm.id, dm.to_user_id, dm.message, dm.created_at, u.id as user_id, u.name as user_name, u.email as user_email, u.image as user_image_url
             from direct_messages as dm
             join users as u
             on u.id = dm.from_user_id
