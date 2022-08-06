@@ -20,7 +20,7 @@ export const ChatSpace = () => {
               </div>
             </div>
             <div className="h-12"></div>
-            <div className="fixed w-full h-full overflow-scroll bg-green-50">
+            <div className="fixed w-full h-full overflow-scroll">
               {/* コメントスペース */}
               <div className="flex flex-col justify-end w-full h-full overflow-scroll ">
                 {/* //TODOコメントをループさせる */}
@@ -36,8 +36,8 @@ export const ChatSpace = () => {
                     date = `${month}月${day}日 ${hours}:${minutes}`;
                     return (
                       <div key={item.id}>
-                        <div className="px-4 text-sm border-t border-gray-300 ">
-                          <div className="flex items-start justify-start py-4 ">
+                        <div className="px-4 text-sm border-t border-gray-200 ">
+                          <div className="flex items-start justify-start py-5 ">
                             {/* アイコン部分 */}
                             <div className="mr-3 ">
                               <div className="w-10 bg-gray-300 border border-gray-300 rounded-md aspect-square">
@@ -48,7 +48,7 @@ export const ChatSpace = () => {
                             {/* チャット部分 */}
                             <div className=" border-opacity-black">
                               <div className="flex items-end justify-star">
-                                <p className="mr-2 font-bold ">
+                                <p className="mr-1 font-bold ">
                                   {item.userName ?? 'No Name'}
                                 </p>
                                 <p className="text-xs font-light text-gray-500">
