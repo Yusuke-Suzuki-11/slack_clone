@@ -56,7 +56,13 @@ export const SideBar = () => {
       .then((response) => {
         if (!response.success) return;
         let userObject = response.message;
-        setUserObjectsArray([userObject]);
+        
+        let userArrayClone = userObjectsArray.concat();
+        userArrayClone.push(userObject)
+        
+        
+        
+        setUserObjectsArray(userArrayClone);
       })
       .catch((e) => {
         console.log(e);
