@@ -13,7 +13,19 @@ class Api::V1::Auth::DirectMessagesController < ApplicationController
         )
         
         message_row_set = DirectMessage.find_by_sql([
-            'select * from direct_messages where to_user_id = 1 and from_user_id = 2 union select * from direct_messages where to_user_id = 2 and from_user_id = 1 ORDER BY id DESC'
+            'select dm.id, dm.to_user_id, dm.message, dm.created_at, u.id as user_id, u.name as user_name, u.email as user_email
+            from direct_messages as dm
+            join users as u
+            on u.id = dm.from_user_id
+            where to_user_id = 1 and from_user_id = 2
+            union 
+            select dm.id, dm.to_user_id, dm.message, dm.created_at, u.id as user_id, u.name as user_name, u.email as user_email
+            from direct_messages as dm
+            join users as u
+            on u.id = dm.from_user_id
+            where to_user_id = 2 and from_user_id = 1
+            ORDER BY id DESC'
+            # 'select * from direct_messages where to_user_id = 1 and from_user_id = 2 union select * from direct_messages where to_user_id = 2 and from_user_id = 1 ORDER BY id DESC'
         ])
         render json: {success: true, message: message_row_set}
     end

@@ -26,15 +26,14 @@ export const ChatSpace = () => {
                 {/* //TODOコメントをループさせる */}
                 <div className="overflow-scroll ">
                   {props.directMessageObjectsArray.map((item) => {
-                    
                     let date = new Date(item.createdAt);
                     let day = date.getDate();
                     let year = date.getFullYear();
                     let month = date.getMonth();
                     let hours = date.getHours();
                     let minutes = date.getMinutes();
-                    
-                    date = `${month}月${day}日 ${hours}:${minutes}`
+
+                    date = `${month}月${day}日 ${hours}:${minutes}`;
                     return (
                       <div key={item.id}>
                         <div className="px-4 text-sm border-t border-gray-300 ">
@@ -54,6 +53,10 @@ export const ChatSpace = () => {
                                   {date}
                                 </p>
                               </div>
+                              <div className="mt-2"></div>
+                              <p className="font-normal">
+                                {item.message}
+                              </p>
                             </div>
                           </div>
                         </div>
