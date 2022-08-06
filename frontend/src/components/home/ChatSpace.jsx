@@ -1,10 +1,14 @@
 import React from "react";
+import { HomeContext, Home } from "../../components/Home";
+import { useContext } from "react";
 
 export const ChatSpace = () => {
+  const props = useContext(HomeContext);
+
   return (
     <>
       <div>
-        <div className="flex">
+        <div className="flex w-screen">
           <div className="w-72 shrink-0"></div>
           <div className="justify-between w-full">
             <div
@@ -16,20 +20,25 @@ export const ChatSpace = () => {
               </div>
             </div>
             <div className="h-12"></div>
-            <div className="fixed w-full h-full bg-green-50">
+            <div className="fixed w-full h-full overflow-scroll bg-green-50">
               {/* コメントスペース */}
-              <div className="flex flex-col justify-end w-full h-full overflow-scroll ">
+              <div className="flex flex-col justify-end w-full h-full ">
                 {/* //TODOコメントをループさせる */}
-                <div className="px-4 text-sm border-t border-gray-300 ">
-                  <div className="flex items-start justify-start py-4 ">
-                    <div className="mr-4 ">
-                      <div className="w-10 bg-green-300 rounded-md aspect-square"></div>
+
+                {props.directMessageObjectsArray.map((item) => {
+                  return (
+                    <div key={item.id}>
+                      <div className="px-4 text-sm border-t border-gray-300 ">
+                        <div className="flex items-start justify-start py-4 ">
+                          <div className="mr-4 ">
+                            <div className="w-10 bg-green-300 rounded-md aspect-square"></div>
+                          </div>
+                          <div className=" border-opacity-black">コメンtの</div>
+                        </div>
+                      </div>
                     </div>
-                    <div className=" border-opacity-black">
-                      コメンtの
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
 
                 <div className="mb-20 bg-white ">
                   <div className="w-full px-4">

@@ -4,6 +4,7 @@ import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { faPlus, faHashtag, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { userInvite } from "../../apis/users";
 import { getMessageByUserId } from "../../apis/direct_messages";
+import { HomeContext, Home } from "../../components/Home";
 
 let targetDom;
 let startOffsetX;
@@ -11,6 +12,8 @@ let endOffsetY;
 let targetWidth;
 
 export const SideBar = () => {
+  const props = React.useContext(HomeContext);
+
   const [showAddGroupPopUp, setShowAddGroupPopUp] = React.useState(false);
   const [showAddMemberPopUp, setShowAddMemberPopUp] = React.useState(false);
   const [inviteUserEmail, setInviteUserEmail] = React.useState("");
@@ -61,11 +64,12 @@ export const SideBar = () => {
       });
     setShowAddMemberPopUp(false);
   };
-  
+
   const getMessage = async (userId) => {
     getMessageByUserId({ userId })
       .then((response) => {
-        console.log(response);
+        props.setDirectMessageObjectsArray(response.message);
+        console.log(response.message);
       })
       .catch((e) => {
         console.log(e);
@@ -102,11 +106,9 @@ export const SideBar = () => {
       >
         <div className="justify-center w-4/12 p-6 m-auto bg-white rounded-md ">
           <div className="flex items-center justify-between ">
-            <p className="text-2xl font-bold ">
-              01Boosterにメンバーを招待する
-            </p>
+            <p className="text-2xl font-bold ">01Boosterにメンバーを招待する</p>
             <button
-              className="flex items-center justify-center h-10 p-2 rounded-md  aspect-square hover:bg-opacity-black"
+              className="flex items-center justify-center h-10 p-2 rounded-md aspect-square hover:bg-opacity-black"
               onClick={(e) => {
                 setShowAddMemberPopUp(false);
               }}
@@ -158,7 +160,7 @@ export const SideBar = () => {
           >
             <div className="flex justify-center w-full ">
               <div className="w-full px-4 ">
-                <div className="w-full my-2 bg-white rounded-md  aspect-square">
+                <div className="w-full my-2 bg-white rounded-md aspect-square">
                   A
                 </div>
               </div>
@@ -176,7 +178,7 @@ export const SideBar = () => {
                 <p className="text-lg font-bold text-white ">01Booster</p>
               </div>
               <div className="h-full py-1 ">
-                <div className="h-full bg-white rounded-full  aspect-square"></div>
+                <div className="h-full bg-white rounded-full aspect-square"></div>
               </div>
             </div>
             {/*// !コメント */}
@@ -189,7 +191,7 @@ export const SideBar = () => {
               </div>
               <div className="w-full">
                 {/* //TODO::アカウントのループ */}
-                <button className="flex items-center w-full px-4 py-1  hover:bg-opacity-black">
+                <button className="flex items-center w-full px-4 py-1 hover:bg-opacity-black">
                   <div className="w-5 mr-3 ">
                     <FontAwesomeIcon icon={faHashtag} className="text-xs" />
                   </div>
@@ -231,8 +233,13 @@ export const SideBar = () => {
                 {userObjectsArray.map((item) => {
                   return (
                     <div key={item.id}>
-                      <button className="flex items-center w-full px-4 py-2  hover:bg-opacity-black" onClick={() => {getMessage(item.id)}}>
-                        <div className="w-5 mr-3 bg-white rounded-sm  aspect-square"></div>
+                      <button
+                        className="flex items-center w-full px-4 py-2 hover:bg-opacity-black"
+                        onClick={() => {
+                          getMessage(item.id);
+                        }}
+                      >
+                        <div className="w-5 mr-3 bg-white rounded-sm aspect-square"></div>
                         <div className="text-sm font-semibold ">
                           {item.name}
                         </div>
