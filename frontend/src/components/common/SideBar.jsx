@@ -13,7 +13,6 @@ let targetWidth;
 
 export const SideBar = () => {
   const props = React.useContext(HomeContext);
-
   const [showAddGroupPopUp, setShowAddGroupPopUp] = React.useState(false);
   const [showAddMemberPopUp, setShowAddMemberPopUp] = React.useState(false);
   const [inviteUserEmail, setInviteUserEmail] = React.useState("");

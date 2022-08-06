@@ -1,6 +1,7 @@
 import React from "react";
 import { HomeContext, Home } from "../../components/Home";
 import { useContext } from "react";
+import { apiSendMessage } from "../../apis/direct_messages";
 
 export const ChatSpace = () => {
   const props = useContext(HomeContext);
@@ -85,22 +86,14 @@ export const ChatSpace = () => {
                       ></textarea>
                       <button
                         onClick={() => {
-                          let dummy = {
-                            createdAt: "2022-08-05T10:41:25.300Z",
-                            id: 100,
-                            message: "unkoko",
-                            toUserId: 1,
-                            userEmail: "mr.suzuki.job@gmail.com",
-                            userId: 2,
-                            userImageUrl: null,
-                            userName: "鈴木佑輔（テスト）",
-                          }
-                          let test = props.directMessageObjectsArray.concat();
-                          test.push(dummy);
-                          props.setDirectMessageObjectsArray(test);
+                          let messagesArrayClone = props.directMessageObjectsArray.concat();
                           
+                          apiSendMessage(postMessage, props.directMessageToUser.id).then((value)=>{
+                            messagesArrayClone.push(value.message);
+                            props.setDirectMessageObjectsArray(messagesArrayClone);
+                          });
                           
-                          console.log(postMessage);
+                          setPostMessage('');
                         }}
                         className="px-4 py-1 rounded-md bg-slate-300"
                       >
