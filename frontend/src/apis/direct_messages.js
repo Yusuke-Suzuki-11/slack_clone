@@ -29,13 +29,8 @@ export const apiSendMessage = (message, toUserId) => {
     !Cookies.get("_client") ||
     !Cookies.get("_uid")
   ) return;
-  alert('test');
   
-  directMessageChannel.talk('unko').then(
-    (value) => {
-      alert('成功');
-    }
-  )
+  directMessageChannel.talk('unko');
 
   // return client
   //   .post(

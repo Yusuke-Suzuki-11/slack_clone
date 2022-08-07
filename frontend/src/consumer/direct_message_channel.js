@@ -13,10 +13,10 @@ export const directMessageChannel = cable.subscriptions.create("DirectMessageCha
     console.log('wow');
   },
   received(data) {
-    console.log('受け取りました');
-    alert(data);
+    console.log(data);
   },
   talk(msg) {
-    return this.perform('speak', { message: msg });
+    console.log(this.perform('talk', {message: msg}))
+
   }
 })

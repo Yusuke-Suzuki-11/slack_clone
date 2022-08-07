@@ -95,12 +95,13 @@ export const ChatSpace = () => {
                           apiSendMessage(
                             postMessage,
                             props.directMessageToUser.id
-                          ).then((value) => {
-                            messagesArrayClone.push(value.message);
-                            props.setDirectMessageObjectsArray(
-                              messagesArrayClone
-                            );
-                          });
+                          );
+                          // .then((value) => {
+                          //   messagesArrayClone.push(value.message);
+                          //   props.setDirectMessageObjectsArray(
+                          //     messagesArrayClone
+                          //   );
+                          // });
                           document.getElementById("post-message").value = "";
                           setPostMessage("");
                         }}

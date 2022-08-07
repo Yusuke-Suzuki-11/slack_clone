@@ -8,6 +8,6 @@ class DirectMessageChannel < ApplicationCable::Channel
   end
 
   def talk(data)
-    ActionCable.server.broadcast('direct_messagechannel', chat_message: data['chat_message'])
+    return ActionCable.server.broadcast 'direct_message_channel', {message: data['message']}
   end
 end
