@@ -3,11 +3,12 @@ import { HomeContext, Home } from "../../components/Home";
 import { useContext } from "react";
 import { apiSendMessage } from "../../apis/direct_messages";
 import createConsumer from "actioncable"
+import { AuthContext } from "../../App";
 
 export const ChatSpace = () => {
   const props = useContext(HomeContext);
+  const authProps = useContext(AuthContext);
   const [postMessage, setPostMessage] = React.useState("");
-
   const handlePostMessage = (event) => {
     setPostMessage(event.target.value);
   };
@@ -90,11 +91,11 @@ export const ChatSpace = () => {
                       ></textarea>
                       <button
                         onClick={() => {
-                          let messagesArrayClone =
-                            props.directMessageObjectsArray.concat();
+                          let messagesArrayClone = props.directMessageObjectsArray.concat();
                           apiSendMessage(
                             postMessage,
-                            props.directMessageToUser.id
+                            props.directMessageToUser.id,
+                            authProps.currentUser.id
                           );
                           // .then((value) => {
                           //   messagesArrayClone.push(value.message);

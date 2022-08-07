@@ -16,7 +16,6 @@ function App() {
   const handleGetCurrentUser = async () => {
     try {
       const res = await getCurrentUser();
-      
       if (res?.data.isLogin === true) {
         setIsSignedIn(true);
         setCurrentUser(res?.data.data);

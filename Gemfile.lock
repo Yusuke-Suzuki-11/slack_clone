@@ -206,6 +206,7 @@ DEPENDENCIES
   rails (~> 7.0.3, >= 7.0.3.1)
   sqlite3 (~> 1.4)
   tzinfo-data
+  warden
 
 RUBY VERSION
    ruby 3.1.2p20

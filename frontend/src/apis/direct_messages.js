@@ -23,14 +23,14 @@ export const getMessageByUserId = (userId) => {
     .catch((e) => console.error(e));
 };
 
-export const apiSendMessage = (message, toUserId) => {
+export const apiSendMessage = (message, toUserId, fromUserId) => {
   if (
     !Cookies.get("_access_token") ||
     !Cookies.get("_client") ||
     !Cookies.get("_uid")
   ) return;
   
-  directMessageChannel.talk('unko');
+  directMessageChannel.talk(message, toUserId, fromUserId);
 
   // return client
   //   .post(

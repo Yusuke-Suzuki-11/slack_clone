@@ -18,7 +18,7 @@ export const Home = () => {
             directMessageObjectsArray,
             setDirectMessageObjectsArray,
             directMessageToUser,
-            setDirectMessageToUser
+            setDirectMessageToUser,
           }}>
           <SideBar />
           <ChatSpace />
