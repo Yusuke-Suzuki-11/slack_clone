@@ -2,12 +2,13 @@ import React from "react";
 import { HomeContext, Home } from "../../components/Home";
 import { useContext } from "react";
 import { apiSendMessage } from "../../apis/direct_messages";
+import createConsumer from "actioncable"
 
 export const ChatSpace = () => {
   const props = useContext(HomeContext);
   const [postMessage, setPostMessage] = React.useState("");
-  
-  const handlePostMessage  = (event) => {
+
+  const handlePostMessage = (event) => {
     setPostMessage(event.target.value);
   };
 
@@ -61,7 +62,9 @@ export const ChatSpace = () => {
                                 </p>
                               </div>
                               <div className="mt-2"></div>
-                              <p className="font-normal whitespace-pre-line">{item.message}</p>
+                              <p className="font-normal whitespace-pre-line">
+                                {item.message}
+                              </p>
                             </div>
                           </div>
                         </div>
@@ -87,13 +90,19 @@ export const ChatSpace = () => {
                       ></textarea>
                       <button
                         onClick={() => {
-                          let messagesArrayClone = props.directMessageObjectsArray.concat();
-                          apiSendMessage(postMessage, props.directMessageToUser.id).then((value)=>{
+                          let messagesArrayClone =
+                            props.directMessageObjectsArray.concat();
+                          apiSendMessage(
+                            postMessage,
+                            props.directMessageToUser.id
+                          ).then((value) => {
                             messagesArrayClone.push(value.message);
-                            props.setDirectMessageObjectsArray(messagesArrayClone);
+                            props.setDirectMessageObjectsArray(
+                              messagesArrayClone
+                            );
                           });
-                          document.getElementById('post-message').value = '';
-                          setPostMessage('');
+                          document.getElementById("post-message").value = "";
+                          setPostMessage("");
                         }}
                         className="px-4 py-1 rounded-md bg-slate-300"
                       >

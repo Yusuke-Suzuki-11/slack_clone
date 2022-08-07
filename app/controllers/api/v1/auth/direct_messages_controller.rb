@@ -11,7 +11,6 @@ class Api::V1::Auth::DirectMessagesController < ApplicationController
             );
         directMessage.save
         
-        
         message_row = DirectMessage.find_by_sql([
             "select dm.id, dm.to_user_id, dm.message, dm.created_at, u.id as user_id, u.name as user_name, u.email as user_email, u.image as user_image_url
             from direct_messages as dm
@@ -21,7 +20,7 @@ class Api::V1::Auth::DirectMessagesController < ApplicationController
             "
         ])
         
-            
+        
         render json: {success: true, message: message_row.first()}
     end
     
