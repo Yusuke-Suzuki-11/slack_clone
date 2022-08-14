@@ -1,17 +1,50 @@
 import React from "react";
 import { HomeContext, Home } from "../../components/Home";
 import { useContext } from "react";
-import { apiSendMessage } from "../../apis/direct_messages";
-import createConsumer from "actioncable"
 import { AuthContext } from "../../App";
+import createConsumer from "actioncable";
+import { useEffect } from "react";
+import ActionCable from "actioncable";
+import { DEFAULT_API_LOCALHOST } from "../../urls";
+import { useState } from "react";
 
+const cable = ActionCable.createConsumer(`${DEFAULT_API_LOCALHOST}/cable`);
 export const ChatSpace = () => {
   const props = useContext(HomeContext);
   const authProps = useContext(AuthContext);
   const [postMessage, setPostMessage] = React.useState("");
+  const [directMessageChannel, setdirectMessageChannel] = React.useState(null);
   const handlePostMessage = (event) => {
     setPostMessage(event.target.value);
   };
+  
+  useEffect(() => {
+    setdirectMessageChannel(
+      cable.subscriptions.create("DirectMessageChannel", {
+        connected() {
+          console.log("connected");
+        },
+
+        disconnected() {
+          console.log("wow");
+        },
+
+        received(data) {
+          let messagesArrayClone = props.directMessageObjectsArray.concat();
+          messagesArrayClone.push(data.message);
+          props.setDirectMessageObjectsArray(messagesArrayClone);
+        },
+
+        talk(msg, toUserId, fromUserId) {
+          this.perform("talk", {
+            message: msg,
+            to_user_id: toUserId,
+            from_user_id: fromUserId,
+          });
+        },
+      })
+    );
+  }, [props.directMessageObjectsArray]);
 
   return (
     <>
@@ -91,12 +124,16 @@ export const ChatSpace = () => {
                       ></textarea>
                       <button
                         onClick={() => {
-                          let messagesArrayClone = props.directMessageObjectsArray.concat();
-                          apiSendMessage(
+                          directMessageChannel.talk(
                             postMessage,
                             props.directMessageToUser.id,
                             authProps.currentUser.id
                           );
+                          // apiSendMessage(
+                          //   postMessage,
+                          //   props.directMessageToUser.id,
+                          //   authProps.currentUser.id
+                          // );
                           // .then((value) => {
                           //   messagesArrayClone.push(value.message);
                           //   props.setDirectMessageObjectsArray(

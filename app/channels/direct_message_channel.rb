@@ -23,7 +23,7 @@ class DirectMessageChannel < ApplicationCable::Channel
 
     message_row = DirectMessage.find_by_sql([
       "
-        select dm.id, dm.to_user_id, dm.message, dm.created_at, u.id as user_id, u.name as user_name, u.email as user_email, u.image as user_image_url
+        select dm.id, dm.to_user_id as toUserId, dm.message, dm.created_at as createdAt, u.id as userId, u.name as userName, u.email as userEmail, u.image as userImageUrl
         from direct_messages as dm
         join users as u
         on u.id = dm.from_user_id
