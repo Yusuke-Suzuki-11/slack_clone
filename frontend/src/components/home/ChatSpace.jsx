@@ -2,11 +2,9 @@ import React from "react";
 import { HomeContext, Home } from "../../components/Home";
 import { useContext } from "react";
 import { AuthContext } from "../../App";
-import createConsumer from "actioncable";
 import { useEffect } from "react";
 import ActionCable from "actioncable";
 import { DEFAULT_API_LOCALHOST } from "../../urls";
-import { useState } from "react";
 
 const cable = ActionCable.createConsumer(`${DEFAULT_API_LOCALHOST}/cable`);
 export const ChatSpace = () => {

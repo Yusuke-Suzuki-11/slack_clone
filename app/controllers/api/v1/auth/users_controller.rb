@@ -24,4 +24,37 @@ class Api::V1::Auth::UsersController < ApplicationController
         render json: {success: true, message: target_user}
     end
     
+    def direct_message_able
+        if current_user.nil?
+            render json: {success: false, message: 'ユーザーが見つかりませんでした。'}
+            return
+        end
+        
+        user_row_set = User.find_by_sql([
+            "
+            select *
+            from users as u
+            where id IN (
+                select r.to_user_id from users as u
+                join reactions as r
+                on u.id = r.from_user_id
+                where r.status = 0
+                and r.from_user_id = 1
+            )
+            union
+            select *
+            from users as u
+            where id IN (
+                select r.from_user_id from users as u
+                join reactions as r
+                on u.id = r.to_user_id 
+                where r.status = 0
+                and r.to_user_id = 1
+            )
+            "
+        ])
+        
+        render json: {success: true, message: user_row_set}
+    end
+    
 end
