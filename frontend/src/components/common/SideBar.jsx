@@ -16,7 +16,6 @@ export const SideBar = () => {
   const [showAddGroupPopUp, setShowAddGroupPopUp] = React.useState(false);
   const [showAddMemberPopUp, setShowAddMemberPopUp] = React.useState(false);
   const [inviteUserEmail, setInviteUserEmail] = React.useState("");
-  const [userObjectsArray, setUserObjectsArray] = React.useState([]);
 
   React.useEffect(() => {
     targetDom = document.getElementById("js-add-group");
@@ -57,12 +56,12 @@ export const SideBar = () => {
         if (!response.success) return;
         let userObject = response.message;
         
-        let userArrayClone = userObjectsArray.concat();
+        let userArrayClone = props.directMessageUserArray.concat();
         userArrayClone.push(userObject)
         
         
         
-        setUserObjectsArray(userArrayClone);
+        props.setDirectMessageUserArray(userArrayClone);
       })
       .catch((e) => {
         console.log(e);
@@ -236,7 +235,7 @@ export const SideBar = () => {
               </div>
               <div className="w-full">
                 {/* //TODO::アカウントのループ */}
-                {userObjectsArray.map((item) => {
+                {props.directMessageUserArray.map((item) => {
                   return (
                     <div key={item.id}>
                       <button

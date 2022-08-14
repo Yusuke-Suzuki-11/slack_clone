@@ -39,7 +39,7 @@ class Api::V1::Auth::UsersController < ApplicationController
                 join reactions as r
                 on u.id = r.from_user_id
                 where r.status = 0
-                and r.from_user_id = 1
+                and r.from_user_id = #{current_user.id}
             )
             union
             select *
@@ -49,7 +49,7 @@ class Api::V1::Auth::UsersController < ApplicationController
                 join reactions as r
                 on u.id = r.to_user_id 
                 where r.status = 0
-                and r.to_user_id = 1
+                and r.to_user_id = #{current_user.id}
             )
             "
         ])
