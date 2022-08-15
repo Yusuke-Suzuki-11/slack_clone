@@ -15,8 +15,11 @@ export const ChatSpace = () => {
   const handlePostMessage = (event) => {
     setPostMessage(event.target.value);
   };
+
   
   useEffect(() => {
+    let el = document.getElementById('chat-space');
+    el.scrollTop = el.scrollHeight;
     setdirectMessageChannel(
       cable.subscriptions.create("DirectMessageChannel", {
         connected() {
@@ -63,7 +66,7 @@ export const ChatSpace = () => {
               {/* コメントスペース */}
               <div className="flex flex-col justify-end w-full h-full overflow-scroll ">
                 {/* //TODOコメントをループさせる */}
-                <div className="overflow-scroll ">
+                <div className="overflow-scroll" id="chat-space">
                   {props.directMessageObjectsArray.map((item) => {
                     let date = new Date(item.createdAt);
                     let day = date.getDate();

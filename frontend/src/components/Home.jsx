@@ -7,9 +7,7 @@ import { useEffect } from "react";
 
 export const HomeContext = createContext();
 export const Home = () => {
-  const [directMessageObjectsArray, setDirectMessageObjectsArray] = useState(
-    []
-  );
+  const [directMessageObjectsArray, setDirectMessageObjectsArray] = useState([]);
   const [directMessageUserArray, setDirectMessageUserArray] = useState([]);
   const [directMessageToUser, setDirectMessageToUser] = useState();
 
