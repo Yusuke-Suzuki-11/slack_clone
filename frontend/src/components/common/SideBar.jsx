@@ -4,7 +4,7 @@ import { faCaretSquareDown } from "@fortawesome/free-regular-svg-icons";
 import { faPlus, faHashtag, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { userInvite } from "../../apis/users";
 import { getMessageByUserId } from "../../apis/direct_messages";
-import { HomeContext, Home } from "../../components/Home";
+import { HomeContext } from "../../components/Home";
 
 let targetDom;
 let startOffsetX;
