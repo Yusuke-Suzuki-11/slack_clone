@@ -15,7 +15,7 @@ export const Home = () => {
     getDirectMessageAbleUsers()
       .then((value) => setDirectMessageUserArray(value.message))
       .catch((e) => console.log(e));
-  });
+  }, [directMessageToUser]);
 
   return (
     <>
