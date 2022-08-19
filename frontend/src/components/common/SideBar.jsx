@@ -111,7 +111,7 @@ export const SideBar = () => {
       >
         <div className="justify-center w-4/12 p-6 m-auto bg-white rounded-md ">
           <div className="flex items-center justify-between ">
-            <p className="text-2xl font-bold ">01Boosterにメンバーを招待する</p>
+            <p className="text-2xl font-bold ">Qwintetにメンバーを招待する</p>
             <button
               className="flex items-center justify-center h-10 p-2 rounded-md aspect-square hover:bg-opacity-black"
               onClick={(e) => {
@@ -180,7 +180,7 @@ export const SideBar = () => {
               style={{ borderBottom: "1px solid  #c2c2c2ad" }}
             >
               <div className="w-full py-3 ">
-                <p className="text-lg font-bold text-white ">01Booster</p>
+                <p className="text-lg font-bold text-white ">Qwintet</p>
               </div>
               <div className="h-full py-1 ">
                 <div className="h-full bg-white rounded-full aspect-square"></div>
